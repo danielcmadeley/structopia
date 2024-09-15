@@ -9,13 +9,16 @@ export const Multiply = () => {
 
   const handleMultiply = async () => {
     try {
-      const response = await fetch("http://localhost:8000/multiply", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ num1, num2 }),
-      });
+      const response = await fetch(
+        "https://structopia-backend.vercel.app/multiply",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ num1, num2 }),
+        }
+      );
       const data = await response.json();
       setResult(data.result);
     } catch (error) {
