@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "python -m venv venv && . venv/bin/activate && pip install -r requirements.txt && python api/main.py",
-    "start": "python main.py"
+    "start": "python api/main.py"
   }
 }
