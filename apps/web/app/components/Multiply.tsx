@@ -10,7 +10,9 @@ export const Multiply = () => {
   const handleMultiply = async () => {
     try {
       const response = await fetch(
-        "https://structopia-backend.vercel.app/multiply",
+        process.env.NODE_ENV === "production"
+          ? "https://structopia-backend.vercel.app/multiply"
+          : "http://localhost:8000/multiply",
         {
           method: "POST",
           headers: {
