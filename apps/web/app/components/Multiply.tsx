@@ -7,24 +7,42 @@ export const Multiply = () => {
   const [num2, setNum2] = useState<number>(0);
   const [result, setResult] = useState<number | null>(null);
 
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://structopia-backend.vercel.app"
+      : "http://localhost:8000";
+
   const handleMultiply = async () => {
     try {
-      const response = await fetch(
-        process.env.NODE_ENV === "production"
-          ? "https://structopia-backend.vercel.app/multiply"
-          : "http://localhost:8000/multiply",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ num1, num2 }),
-        }
-      );
+      const response = await fetch(`${apiUrl}/multiply`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ num1, num2 }),
+      });
       const data = await response.json();
       setResult(data.result);
     } catch (error) {
       console.error("Error:", error);
+    }
+  };
+
+  const handleDivideByTwo = async () => {
+    if (result !== null) {
+      try {
+        const response = await fetch(`${apiUrl}/divide-by-two`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ number: result }),
+        });
+        const data = await response.json();
+        setResult(data.result);
+      } catch (error) {
+        console.error("Error:", error);
+      }
     }
   };
 
@@ -43,7 +61,12 @@ export const Multiply = () => {
         placeholder="Enter second number"
       />
       <button onClick={handleMultiply}>Multiply</button>
-      {result !== null && <p>Result: {result}</p>}
+      {result !== null && (
+        <div>
+          <p>Result: {result}</p>
+          <button onClick={handleDivideByTwo}>Divide by 2</button>
+        </div>
+      )}{" "}
     </div>
   );
 };

@@ -26,7 +26,18 @@ async def multiply(input: MultiplyInput):
     result = input.num1 * input.num2
     return {"result": result}
 
+class BeamCalcInput(BaseModel):
+    length: float
+    load: float
+    elasticity: float
+    inertia: float
+
+@app.post("/beam-calcs")
+async def beam_calcs(input: BeamCalcInput):
+    deflection = (5 * input.load * input.length**4) / (384 * input.elasticity * input.inertia)
+    moment = (input.load * input.length**2) / 8
+    return {"deflection": deflection, "moment": moment}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-
