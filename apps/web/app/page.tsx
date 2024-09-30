@@ -6,12 +6,12 @@ import { ArrowRight, BarChart2, Shield, Zap } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Variants } from "framer-motion";
 
 export default function LandingPage() {
-  const fadeIn = {
+  const fadeIn: Variants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
   };
 
   const staggerChildren = {
@@ -76,7 +76,13 @@ export default function LandingPage() {
             <div className="flex flex-col items-center space-y-4 text-center">
               <motion.h1
                 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none max-w-3xl bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500"
-                variants={fadeIn}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 0.5 }}
               >
                 Revolutionize Your Structural Engineering Workflow
               </motion.h1>
