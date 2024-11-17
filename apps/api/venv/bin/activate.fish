@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/mxdeley/Documents/designstudio/structopia/apps/api/venv"
+set -gx VIRTUAL_ENV "/Users/mxdeley/madeleydesignstudio/projects/structopia/apps/api/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
