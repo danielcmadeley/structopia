@@ -136,7 +136,7 @@ export default function Component() {
                   size="none"
                   variant="none"
                   className={cn(
-                    "text-sm font-medium text-stone-400 transition-colors hover:text-white",
+                    "text-xs text-stone-400 transition-colors hover:text-white",
                     activeItem === item && "text-white"
                   )}
                   onMouseEnter={() => handleMouseEnter(item)}
@@ -151,7 +151,7 @@ export default function Component() {
                   <Button
                     size="none"
                     variant="none"
-                    className="text-sm font-medium text-stone-400 transition-colors hover:text-white"
+                    className="text-xs text-stone-400 transition-colors hover:text-white"
                     onMouseEnter={() => handleMouseEnter(item)}
                   >
                     {item}
