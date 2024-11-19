@@ -11,6 +11,12 @@ const Pricing = () => {
         sizes="100vw"
         quality={85}
       />
+      <div className="absolute inset-0 flex flex-col items-center text-stone-50 text-center mt-[66vh]">
+        <div className="text-3xl font-bold">
+          <span className="line-through mr-2 text-stone-400">£50</span>
+          £30/mo Public Launch Deal
+        </div>
+      </div>
     </div>
   );
 };
