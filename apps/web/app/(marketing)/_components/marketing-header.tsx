@@ -23,21 +23,25 @@ export default function Component() {
       {
         title: "Analysis Tools",
         description: "Powerful tools for structural analysis",
+        href: "/features/analysis",
         image: "/placeholder.svg?height=400&width=600",
       },
       {
         title: "3D Modeling",
         description: "Create and visualize structural models",
+        href: "/features/modeling",
         image: "/placeholder.svg?height=400&width=600",
       },
       {
         title: "Reports",
         description: "Generate detailed structural reports",
+        href: "/features/reports",
         image: "/placeholder.svg?height=400&width=600",
       },
       {
         title: "Calculations",
         description: "Advanced structural calculations",
+        href: "/features/calculations",
         image: "/placeholder.svg?height=400&width=600",
       },
     ],
@@ -45,44 +49,56 @@ export default function Component() {
       {
         title: "Documentation",
         description: "Comprehensive guides and tutorials",
+        href: "/resources/documentation",
         image: "/placeholder.svg?height=400&width=600",
       },
       {
         title: "Case Studies",
         description: "Real-world applications and examples",
+        href: "/resources/case-studies",
         image: "/placeholder.svg?height=400&width=600",
       },
       {
         title: "Blog",
         description: "Latest news and technical articles",
+        href: "/resources/blog",
         image: "/placeholder.svg?height=400&width=600",
       },
       {
         title: "Support",
         description: "Get help when you need it",
+        href: "/resources/support",
         image: "/placeholder.svg?height=400&width=600",
       },
     ],
     Company: [
       {
-        title: "About Us",
+        title: "Story",
         description: "Learn about our mission and values",
-        image: "/placeholder.svg?height=400&width=600",
+        href: "/company/story",
+        image:
+          "https://ik.imagekit.io/danielcmadeley/structopia/story.png?updatedAt=1731954129234",
       },
       {
-        title: "Careers",
+        title: "Blog",
         description: "Join our growing team",
-        image: "/placeholder.svg?height=400&width=600",
+        href: "/company/blog",
+        image:
+          "https://ik.imagekit.io/danielcmadeley/structopia/blog.png?updatedAt=1731954128839",
       },
       {
-        title: "Contact",
+        title: "Public Roadmap",
         description: "Get in touch with us",
-        image: "/placeholder.svg?height=400&width=600",
+        href: "/company/roadmap",
+        image:
+          "https://ik.imagekit.io/danielcmadeley/structopia/roadmap.png?updatedAt=1731954129324",
       },
       {
-        title: "Press Kit",
+        title: "Updates",
         description: "Media resources and brand assets",
-        image: "/placeholder.svg?height=400&width=600",
+        href: "/company/updates",
+        image:
+          "https://ik.imagekit.io/danielcmadeley/structopia/updates.png?updatedAt=1731954129249",
       },
     ],
   };
@@ -179,7 +195,7 @@ export default function Component() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed max-w-6xl z-40 mt-[48px] w-full overflow-hidden bg-stone-950/80 backdrop:blur-md rounded-b-[6px]"
+            className="fixed max-w-6xl z-50 mt-[48px] w-full overflow-hidden bg-stone-950/80 backdrop:blur-md rounded-b-[6px]"
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
@@ -187,8 +203,8 @@ export default function Component() {
               {navConfig[activeItem as keyof typeof navConfig]?.map((item) => (
                 <Link
                   key={item.title}
-                  href="#"
-                  className="group relative aspect-[4/3] overflow-hidden rounded-lg"
+                  href={item.href}
+                  className="group relative aspect-[4/3] overflow-hidden rounded-[6px]"
                 >
                   <Image
                     src={item.image}
@@ -196,7 +212,7 @@ export default function Component() {
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                     fill
                   />
-                  <div className="absolute inset-0 bg-stone-900" />
+                  {/* <div className="absolute inset-0 bg-stone-900" /> */}
                   <div className="absolute inset-0 p-6">
                     <h3 className="text-xl font-semibold text-white">
                       {item.title}
