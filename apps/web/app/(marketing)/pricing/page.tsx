@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 const Pricing = () => {
   return (
@@ -18,6 +19,7 @@ const Pricing = () => {
             <span className="line-through mr-2 text-stone-400">£50</span>
             £30/mo Public Launch Deal
           </div>
+          <Button>Buy Now</Button>
         </div>
       </div>
     </>

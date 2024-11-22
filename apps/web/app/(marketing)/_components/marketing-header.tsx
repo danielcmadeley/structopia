@@ -221,7 +221,7 @@ export default function MarketingHeader() {
               {activeItem === "Features" ? (
                 <>
                   <Link
-                    href="/ai-eurocodes"
+                    href="/features/ai-eurocodes"
                     className="col-span-1  bg-stone-900 p-6 flex items-end h-[280px] rounded-[6px]"
                   >
                     <h2 className="text-2xl font-bold">AI Eurocodes</h2>
@@ -230,13 +230,13 @@ export default function MarketingHeader() {
                   {/* Middle Column */}
                   <div className="col-span-1 flex flex-col gap-4">
                     <Link
-                      href="/project-management"
+                      href="/features/project-management"
                       className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
                     >
                       <h2 className="text-2xl font-bold">Project Management</h2>
                     </Link>
                     <Link
-                      href="/structures-database"
+                      href="/features/structures-database"
                       className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
                     >
                       <h2 className="text-2xl font-bold">
@@ -248,7 +248,7 @@ export default function MarketingHeader() {
                   {/* Right Column */}
                   <div className="col-span-1 flex flex-col gap-4">
                     <Link
-                      href="/structural-calculations"
+                      href="/features/structural-calculations"
                       className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
                     >
                       <h2 className="text-2xl font-bold">
@@ -256,7 +256,7 @@ export default function MarketingHeader() {
                       </h2>
                     </Link>
                     <Link
-                      href="/knowledge-hub"
+                      href="/features/knowledge-hub"
                       className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
                     >
                       <h2 className="text-2xl font-bold">Knowledge Hub</h2>
@@ -266,13 +266,13 @@ export default function MarketingHeader() {
               ) : activeItem === "Resources" ? (
                 <>
                   <Link
-                    href="/statics"
+                    href="/resources/statics"
                     className="col-span-1 rounded-[6px] bg-stone-900 p-6 flex items-end h-[280px]"
                   >
                     <h2 className="text-2xl font-bold">Statics</h2>
                   </Link>
                   <Link
-                    href="/dynamics"
+                    href="/resources/dynamics"
                     className="col-span-1 rounded-[6px] bg-stone-900 p-6 flex items-end h-[280px]"
                   >
                     <h2 className="text-2xl font-bold">Dynamics</h2>
@@ -280,7 +280,7 @@ export default function MarketingHeader() {
 
                   <div className="col-span-1 grid grid-rows-2 grid-cols-2 gap-4 h-[280px]">
                     <Link
-                      href="/structural-design"
+                      href="/resources/structural-design"
                       className="rounded-[6px] bg-stone-900 p-4 flex items-end"
                     >
                       <h3 className="text-lg font-semibold">
@@ -288,7 +288,7 @@ export default function MarketingHeader() {
                       </h3>
                     </Link>
                     <Link
-                      href="/warranty"
+                      href="/resources/warranty"
                       className="rounded-[6px] bg-stone-900 p-4 flex items-end"
                     >
                       <h3 className="text-lg font-semibold">
@@ -296,13 +296,13 @@ export default function MarketingHeader() {
                       </h3>
                     </Link>
                     <Link
-                      href="/fea-fem"
+                      href="/resources/fea-fem"
                       className="rounded-[6px] bg-stone-900 p-4 flex items-end"
                     >
                       <h3 className="text-lg font-semibold">FEA / FEM</h3>
                     </Link>
                     <Link
-                      href="/terms"
+                      href="/resources/terms"
                       className="rounded-[6px] bg-stone-900 p-4 flex items-end"
                     >
                       <h3 className="text-lg font-semibold">
