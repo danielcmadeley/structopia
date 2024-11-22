@@ -8,15 +8,33 @@ import {
   Calculator,
   ClipboardList,
   Database,
+  LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
-const FeaturesSection = () => {
-  const [activeFeature, setActiveFeature] = useState("ai");
+import Image from "next/image";
 
-  const features = {
+// Define Feature interface
+interface Feature {
+  icon: LucideIcon;
+  title: string;
+  image?: string;
+  description: string;
+  content: string;
+}
+
+// Define features type
+type Features = {
+  [key: string]: Feature;
+};
+
+const FeaturesSection = () => {
+  // Define features object first
+  const features: Features = {
     ai: {
       icon: Brain,
       title: "AI Eurocodes",
+      image:
+        "https://ik.imagekit.io/danielcmadeley/structopia/ai-eurocodes.jpg?updatedAt=1732311244998",
       description:
         "Intelligent structural design assistance powered by advanced AI algorithms.",
       content:
@@ -25,6 +43,8 @@ const FeaturesSection = () => {
     task: {
       icon: ClipboardList,
       title: "Task Management",
+      image:
+        "https://ik.imagekit.io/danielcmadeley/structopia/project-management.jpg?updatedAt=1732311244312",
       description:
         "Streamlined project and task management for structural engineering teams.",
       content:
@@ -40,6 +60,8 @@ const FeaturesSection = () => {
     database: {
       icon: Database,
       title: "Structural Database",
+      image:
+        "https://ik.imagekit.io/danielcmadeley/structopia/structural-database.jpg?updatedAt=1732311244312",
       description:
         "Extensive database of structural elements and specifications.",
       content:
@@ -48,6 +70,8 @@ const FeaturesSection = () => {
     knowledge: {
       icon: BookOpen,
       title: "Knowledge Hub",
+      image:
+        "https://ik.imagekit.io/danielcmadeley/structopia/knowledge-hub.jpg?updatedAt=1732311244312",
       description:
         "Centralized knowledge base for structural engineering resources.",
       content:
@@ -55,9 +79,12 @@ const FeaturesSection = () => {
     },
   };
 
+  // Use string type for activeFeature state
+  const [activeFeature, setActiveFeature] = useState<string>("ai");
+
   return (
-    <div className="relative -mt-[20vh] min-h-screen w-full  flex  justify-center ">
-      <div className="w-full text-stone-50 min-h-[600px] p-6 flex ">
+    <div className="relative -mt-[20vh] min-h-screen w-full flex justify-center">
+      <div className="w-full text-stone-50 min-h-[600px] p-6 flex">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="flex flex-wrap gap-2">
             {Object.entries(features).map(([key, feature]) => {
@@ -79,7 +106,16 @@ const FeaturesSection = () => {
             })}
           </div>
 
-          <div className="items-center border border-stone-600 h-[500px] rounded-[6px]"></div>
+          <div className="items-center border border-stone-600 rounded-[6px] relative w-full aspect-[1.4/1]">
+            {features[activeFeature]?.image && (
+              <Image
+                src={features[activeFeature].image}
+                alt={features[activeFeature].title}
+                className="w-full h-full object-cover rounded-[6px]"
+                fill
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 export default function MarketingHero() {
   return (
@@ -19,6 +20,20 @@ export default function MarketingHero() {
           Structopia helps you optimise your structural design workflow, keep on
           top of project deadlines and manage your design tasks.
         </p>
+        <div className="flex gap-4">
+          <Button
+            size="lg"
+            className="bg-red-800 text-stone-50 hover:bg-red-700 rounded-[6px]"
+          >
+            Get Started
+          </Button>
+          <Button
+            size="lg"
+            className="bg-stone-800 text-stone-50 hover:bg-stone-700 rounded-[6px]"
+          >
+            Learn More
+          </Button>
+        </div>
       </div>
     </div>
   );
