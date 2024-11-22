@@ -1,15 +1,12 @@
 "use client";
 
-import * as React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { SignInButton } from "@clerk/nextjs";
-import { SignedOut } from "@clerk/nextjs";
-import { SignedIn } from "@clerk/nextjs";
-import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
+import * as React from "react";
 
 export default function MarketingHeader() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -158,7 +155,7 @@ export default function MarketingHeader() {
           "fixed h-[40px] mt-2 items-center z-50 max-w-6xl mx-auto w-full flex justify-center",
           isOpen
             ? "rounded-t-[6px] bg-stone-950/80 backdrop-blur-md"
-            : "rounded-[6px] bg-stone-800/80"
+            : "rounded-[6px] bg-stone-800/80 backdrop-blur-md"
         )}
       >
         <div className="flex items-center px-4 md:px-6 w-full max-w-6xl">

@@ -1,16 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import {
-  Brain,
-  ClipboardList,
-  Calculator,
-  Database,
   BookOpen,
+  Brain,
+  Calculator,
+  ClipboardList,
+  Database,
 } from "lucide-react";
+import { useState } from "react";
 const FeaturesSection = () => {
   const [activeFeature, setActiveFeature] = useState("ai");
 
@@ -57,8 +56,8 @@ const FeaturesSection = () => {
   };
 
   return (
-    <div className="relative -mt-[20vh] min-h-screen w-full rounded-t-3xl shadow-2xl flex  justify-center">
-      <div className="w-full text-white min-h-[600px] p-6 flex ">
+    <div className="relative -mt-[20vh] min-h-screen w-full  flex  justify-center ">
+      <div className="w-full text-stone-50 min-h-[600px] p-6 flex ">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="flex flex-wrap gap-2">
             {Object.entries(features).map(([key, feature]) => {
