@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Component() {
+export default function MarketingHeader() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState<string | null>(null);
 
@@ -18,7 +18,18 @@ export default function Component() {
     Developers: "/developers",
   };
 
-  const navConfig = {
+  type NavItem = {
+    title: string;
+    description: string;
+    href: string;
+    image: string;
+  };
+
+  type NavConfig = {
+    [K in (typeof dropdownItems)[number]]: NavItem[];
+  };
+
+  const navConfig: NavConfig = {
     Features: [
       {
         title: "Analysis Tools",
@@ -124,13 +135,20 @@ export default function Component() {
     setActiveItem(null);
   };
 
+  const getDropdownLayout = (activeItem: string) => {
+    if (activeItem === "Company") {
+      return "grid grid-cols-1 lg:grid-cols-4 gap-4 p-8";
+    }
+    return "grid grid-cols-1 lg:grid-cols-3 gap-4 p-8";
+  };
+
   return (
     <div className="flex justify-center">
       <header
         className={cn(
           "fixed h-[40px] mt-2 items-center z-50 max-w-6xl mx-auto w-full flex justify-center",
           isOpen
-            ? "rounded-t-[6px] bg-stone-950/80 backdrop:blur-md"
+            ? "rounded-t-[6px] bg-stone-950/80 backdrop-blur-md"
             : "rounded-[6px] bg-stone-800/80"
         )}
       >
@@ -195,34 +213,122 @@ export default function Component() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed max-w-6xl z-50 mt-[48px] w-full overflow-hidden bg-stone-950/80 backdrop:blur-md rounded-b-[6px]"
+            className="fixed max-w-6xl z-50 mt-[48px] w-full overflow-hidden bg-stone-950/80 backdrop-blur-md rounded-b-[6px]"
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="grid gap-4 p-4 md:grid-cols-4 md:p-6">
-              {navConfig[activeItem as keyof typeof navConfig]?.map((item) => (
-                <Link
-                  key={item.title}
-                  href={item.href}
-                  className="group relative aspect-[4/3] overflow-hidden rounded-[6px]"
-                >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    fill
-                  />
-                  {/* <div className="absolute inset-0 bg-stone-900" /> */}
-                  <div className="absolute inset-0 p-6">
-                    <h3 className="text-xl font-semibold text-white">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-zinc-200">
-                      {item.description}
-                    </p>
+            <div className={getDropdownLayout(activeItem)}>
+              {activeItem === "Features" ? (
+                <>
+                  <Link
+                    href="/ai-eurocodes"
+                    className="col-span-1  bg-stone-900 p-6 flex items-end h-[280px] rounded-[6px]"
+                  >
+                    <h2 className="text-2xl font-bold">AI Eurocodes</h2>
+                  </Link>
+
+                  {/* Middle Column */}
+                  <div className="col-span-1 flex flex-col gap-4">
+                    <Link
+                      href="/project-management"
+                      className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
+                    >
+                      <h2 className="text-2xl font-bold">Project Management</h2>
+                    </Link>
+                    <Link
+                      href="/structures-database"
+                      className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
+                    >
+                      <h2 className="text-2xl font-bold">
+                        Structures Database
+                      </h2>
+                    </Link>
                   </div>
-                </Link>
-              ))}
+
+                  {/* Right Column */}
+                  <div className="col-span-1 flex flex-col gap-4">
+                    <Link
+                      href="/structural-calculations"
+                      className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
+                    >
+                      <h2 className="text-2xl font-bold">
+                        Structural Calculations
+                      </h2>
+                    </Link>
+                    <Link
+                      href="/knowledge-hub"
+                      className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
+                    >
+                      <h2 className="text-2xl font-bold">Knowledge Hub</h2>
+                    </Link>
+                  </div>
+                </>
+              ) : activeItem === "Resources" ? (
+                <>
+                  <Link
+                    href="/statics"
+                    className="col-span-1 rounded-[6px] bg-stone-900 p-6 flex items-end h-[280px]"
+                  >
+                    <h2 className="text-2xl font-bold">Statics</h2>
+                  </Link>
+                  <Link
+                    href="/dynamics"
+                    className="col-span-1 rounded-[6px] bg-stone-900 p-6 flex items-end h-[280px]"
+                  >
+                    <h2 className="text-2xl font-bold">Dynamics</h2>
+                  </Link>
+
+                  <div className="col-span-1 grid grid-rows-2 grid-cols-2 gap-4 h-[280px]">
+                    <Link
+                      href="/structural-design"
+                      className="rounded-[6px] bg-stone-900 p-4 flex items-end"
+                    >
+                      <h3 className="text-lg font-semibold">
+                        Structural Design
+                      </h3>
+                    </Link>
+                    <Link
+                      href="/warranty"
+                      className="rounded-[6px] bg-stone-900 p-4 flex items-end"
+                    >
+                      <h3 className="text-lg font-semibold">
+                        Warranty Providers
+                      </h3>
+                    </Link>
+                    <Link
+                      href="/fea-fem"
+                      className="rounded-[6px] bg-stone-900 p-4 flex items-end"
+                    >
+                      <h3 className="text-lg font-semibold">FEA / FEM</h3>
+                    </Link>
+                    <Link
+                      href="/terms"
+                      className="rounded-[6px] bg-stone-900 p-4 flex items-end"
+                    >
+                      <h3 className="text-lg font-semibold">
+                        Terms and Conditions
+                      </h3>
+                    </Link>
+                  </div>
+                </>
+              ) : activeItem === "Company" ? (
+                <>
+                  {navConfig[activeItem].map((item) => (
+                    <Link
+                      key={item.title}
+                      href={item.href}
+                      className=" bg-stone-900 p-6 h-[280px] rounded-[6px]"
+                    >
+                      <div className="flex flex-col gap-2">
+                        <h2 className="text-2xl font-bold">{item.title}</h2>
+                        <p className="text-sm text-stone-400">
+                          {item.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </>
+              ) : null}
             </div>
           </motion.div>
         )}
