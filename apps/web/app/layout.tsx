@@ -11,7 +11,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Structopia",
-  description: "A Structural Engineers Personal Assistant.",
+  description: "A Structural Engineers Personal Assistant",
 };
 
 export default function RootLayout({
