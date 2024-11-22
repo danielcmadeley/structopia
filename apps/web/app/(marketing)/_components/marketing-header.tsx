@@ -6,6 +6,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import { SignInButton } from "@clerk/nextjs";
+import { SignedOut } from "@clerk/nextjs";
+import { SignedIn } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
 
 export default function MarketingHeader() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -142,6 +146,11 @@ export default function MarketingHeader() {
     return "grid grid-cols-1 lg:grid-cols-3 gap-4 p-8";
   };
 
+  const handleLinkClick = () => {
+    setIsOpen(false);
+    setActiveItem(null);
+  };
+
   return (
     <div className="flex justify-center">
       <header
@@ -193,15 +202,29 @@ export default function MarketingHeader() {
                 </Link>
               )
             )}
-            <div className="ml-auto">
-              <Button
-                size="sm"
-                variant="default"
-                className="bg-red-800 text-white hover:bg-red-700 rounded-[6px]"
-                onMouseEnter={() => handleMouseEnter("")}
-              >
-                Dashboard
-              </Button>
+            <div className="ml-auto flex items-center gap-2">
+              <SignedIn>
+                <Link href="/dashboard">
+                  <Button
+                    size="sm"
+                    variant="default"
+                    className="bg-red-800 text-white hover:bg-red-700 rounded-[6px]"
+                    onMouseEnter={() => handleMouseEnter("")}
+                  >
+                    Dashboard
+                  </Button>
+                </Link>
+              </SignedIn>
+              <SignedOut>
+                <Button
+                  size="sm"
+                  variant="default"
+                  className="bg-red-800 text-white hover:bg-red-700 rounded-[6px]"
+                  onMouseEnter={() => handleMouseEnter("")}
+                >
+                  <SignInButton />
+                </Button>
+              </SignedOut>
             </div>
           </nav>
         </div>
@@ -223,6 +246,7 @@ export default function MarketingHeader() {
                   <Link
                     href="/features/ai-eurocodes"
                     className="col-span-1  bg-stone-900 p-6 flex items-end h-[280px] rounded-[6px]"
+                    onClick={handleLinkClick}
                   >
                     <h2 className="text-2xl font-bold">AI Eurocodes</h2>
                   </Link>
@@ -232,12 +256,14 @@ export default function MarketingHeader() {
                     <Link
                       href="/features/project-management"
                       className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
+                      onClick={handleLinkClick}
                     >
                       <h2 className="text-2xl font-bold">Project Management</h2>
                     </Link>
                     <Link
                       href="/features/structures-database"
                       className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
+                      onClick={handleLinkClick}
                     >
                       <h2 className="text-2xl font-bold">
                         Structures Database
@@ -250,6 +276,7 @@ export default function MarketingHeader() {
                     <Link
                       href="/features/structural-calculations"
                       className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
+                      onClick={handleLinkClick}
                     >
                       <h2 className="text-2xl font-bold">
                         Structural Calculations
@@ -258,6 +285,7 @@ export default function MarketingHeader() {
                     <Link
                       href="/features/knowledge-hub"
                       className="rounded-[6px] bg-stone-900 p-6 flex items-end h-[133px]"
+                      onClick={handleLinkClick}
                     >
                       <h2 className="text-2xl font-bold">Knowledge Hub</h2>
                     </Link>
@@ -268,12 +296,14 @@ export default function MarketingHeader() {
                   <Link
                     href="/resources/statics"
                     className="col-span-1 rounded-[6px] bg-stone-900 p-6 flex items-end h-[280px]"
+                    onClick={handleLinkClick}
                   >
                     <h2 className="text-2xl font-bold">Statics</h2>
                   </Link>
                   <Link
                     href="/resources/dynamics"
                     className="col-span-1 rounded-[6px] bg-stone-900 p-6 flex items-end h-[280px]"
+                    onClick={handleLinkClick}
                   >
                     <h2 className="text-2xl font-bold">Dynamics</h2>
                   </Link>
@@ -282,6 +312,7 @@ export default function MarketingHeader() {
                     <Link
                       href="/resources/structural-design"
                       className="rounded-[6px] bg-stone-900 p-4 flex items-end"
+                      onClick={handleLinkClick}
                     >
                       <h3 className="text-lg font-semibold">
                         Structural Design
@@ -290,6 +321,7 @@ export default function MarketingHeader() {
                     <Link
                       href="/resources/warranty"
                       className="rounded-[6px] bg-stone-900 p-4 flex items-end"
+                      onClick={handleLinkClick}
                     >
                       <h3 className="text-lg font-semibold">
                         Warranty Providers
@@ -298,12 +330,14 @@ export default function MarketingHeader() {
                     <Link
                       href="/resources/fea-fem"
                       className="rounded-[6px] bg-stone-900 p-4 flex items-end"
+                      onClick={handleLinkClick}
                     >
                       <h3 className="text-lg font-semibold">FEA / FEM</h3>
                     </Link>
                     <Link
                       href="/resources/terms"
                       className="rounded-[6px] bg-stone-900 p-4 flex items-end"
+                      onClick={handleLinkClick}
                     >
                       <h3 className="text-lg font-semibold">
                         Terms and Conditions
@@ -317,7 +351,8 @@ export default function MarketingHeader() {
                     <Link
                       key={item.title}
                       href={item.href}
-                      className=" bg-stone-900 p-6 h-[280px] rounded-[6px]"
+                      className="bg-stone-900 p-6 h-[280px] rounded-[6px]"
+                      onClick={handleLinkClick}
                     >
                       <div className="flex flex-col gap-2">
                         <h2 className="text-2xl font-bold">{item.title}</h2>

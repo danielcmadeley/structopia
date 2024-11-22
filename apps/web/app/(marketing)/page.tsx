@@ -1,15 +1,17 @@
 "use client";
 
 import FeaturesSection from "./_components/features-section";
+import Image from "next/image";
 
 export default function LandingPage() {
   return (
     <>
       <div className="h-screen w-screen relative">
-        <img
+        <Image
           src="https://ik.imagekit.io/danielcmadeley/structopia/home-background.jpg?updatedAt=1731954067093"
           alt="Description"
           className="w-full h-full object-cover"
+          fill
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 max-w-4xl mx-auto">
           <h1 className="text-9xl font-bold text-stone-50">STRUCTOPIA</h1>
