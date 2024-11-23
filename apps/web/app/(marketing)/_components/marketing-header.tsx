@@ -168,7 +168,7 @@ export default function MarketingHeader() {
               onMouseEnter={() => handleMouseEnter("")}
             />
           </Link>
-          <nav className="flex flex-1 items-center gap-6 ">
+          <nav className="flex flex-1 items-center gap-6">
             {allNavItems.map((item) =>
               dropdownItems.includes(item as (typeof dropdownItems)[number]) ? (
                 <Button
@@ -187,6 +187,7 @@ export default function MarketingHeader() {
                 <Link
                   key={item}
                   href={linkDestinations[item as keyof typeof linkDestinations]}
+                  className="flex items-center"
                 >
                   <Button
                     size="none"
