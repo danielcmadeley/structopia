@@ -58,10 +58,10 @@ export default function StructuresManual() {
     <div className="w-full space-y-8  p-6 h-full">
       <div className="relative">
         <h2 className="mb-4 text-xl font-bold text-white">
-          STRUCTURAL DESIGN CHAPTERS
+          MECHANICS CHAPTERS
         </h2>
-        <ScrollArea className="relative h-[400px]">
-          <div ref={scrollContainerRef} className="flex space-x-4 pb-4">
+        <ScrollArea ref={scrollContainerRef} className="relative h-[400px]">
+          <div className="flex space-x-4 pb-4">
             {chapters.map((chapter) => (
               <a
                 key={chapter.id}

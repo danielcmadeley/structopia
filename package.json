@@ -23,5 +23,5 @@
     "apps/*",
     "packages/*"
   ],
-  "dependencies": { "@clerk/nextjs": "^6.4.2", "@langchain/community": "^0.3.3", "@langchain/openai": "^0.3.2", "@react-three/drei": "^9.117.3", "@react-three/fiber": "^8.17.10", "@supabase/supabase-js": "^2.45.4", "@tabler/icons-react": "^3.22.0", "ai": "^3.4.7", "better-react-mathjax": "^2.0.4-beta1", "framer-motion": "^11.9.0", "langchain": "^0.3.2", "pdf-parse": "^1.1.1", "react-latex-next": "^3.0.0", "three": "^0.170.0", "three-globe": "^2.35.2" }
+  "dependencies": { "@clerk/nextjs": "^6.4.2", "@langchain/community": "^0.3.3", "@langchain/openai": "^0.3.2", "@react-three/drei": "^9.117.3", "@react-three/fiber": "^8.17.10", "@supabase/supabase-js": "^2.45.4", "@tabler/icons-react": "^3.22.0", "ai": "^3.4.7", "better-react-mathjax": "^2.0.4-beta1", "cmdk": "^1.0.4", "framer-motion": "^11.9.0", "langchain": "^0.3.2", "pdf-parse": "^1.1.1", "react-latex-next": "^3.0.0", "three": "^0.170.0", "three-globe": "^2.35.2" }
 }
