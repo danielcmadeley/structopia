@@ -35,9 +35,9 @@ export default function ProjectManager() {
         </div>
         <div className="grid grid-cols-5 h-[calc(100%-75px)]">
           <div className="col-span-2 border-r border-stone-600">
-            {tabs[activeTab].content}
+            {tabs[activeTab]?.content}
           </div>
-          <div className="col-span-3">{tabs[activeTab].image}</div>
+          <div className="col-span-3">{tabs[activeTab]?.image}</div>
         </div>
       </div>
     </div>
