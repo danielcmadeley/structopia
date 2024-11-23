@@ -1,10 +1,16 @@
 "use client";
 
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 export default function StructuralCalculations() {
   return (
-    <div className="w-full text-stone-50 p-4 font-roboto font-thin">
-      <div className="max-w-6xl mx-auto">
-        <div className="border border-stone-600 rounded-sm h-[100vh] flex flex-col">
+    <div className="w-full h-screen flex flex-col max-w-6xl mx-auto">
+      <div className="flex">
+        <h1 className="text-3xl font-bold text-stone-50 uppercase py-8">
+          Structural Calculations
+        </h1>
+      </div>
+      <div className="w-full text-stone-50 font-roboto font-thin flex-1">
+        <div className="border border-stone-600 rounded-sm h-full flex flex-col">
           <div className="h-[150px] flex w-full">
             <div className="w-[20%] border-r border-b border-stone-600 flex flex-col justify-center items-start p-2">
               <div className="h-full">
@@ -47,7 +53,12 @@ export default function StructuralCalculations() {
           </div>
           <div className="w-full h-full flex">
             <div className="w-[20%] border-r border-stone-600 h-full flex justify-center items-center"></div>
-            <div className="w-[65%] border-r border-stone-600 h-full flex justify-center items-center"></div>
+            <div className="w-[65%] border-r border-stone-600 h-full flex justify-center items-center">
+              <MathJaxContext>
+                <h2>Basic MathJax example with Latex</h2>
+                <MathJax>{"\\(\\frac{10}{4x} \\approx 2^{12}\\)"}</MathJax>
+              </MathJaxContext>
+            </div>
             <div className="w-[15%] h-full flex justify-center items-center"></div>
           </div>
         </div>
