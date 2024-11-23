@@ -23,20 +23,20 @@ const DashboardNavbar = ({ children }: DashboardNavbarProps) => {
   const pathname = usePathname();
 
   const getPageTitle = () => {
-    switch (pathname) {
-      case "/dashboard":
+    switch (true) {
+      case pathname === "/dashboard":
         return "DASHBOARD";
-      case "/dashboard/ai-eurocodes":
+      case pathname.startsWith("/dashboard/ai-eurocodes"):
         return "AI EUROCODES";
-      case "/dashboard/project-manager":
+      case pathname.startsWith("/dashboard/project-manager"):
         return "PROJECT MANAGER";
-      case "/dashboard/calculations":
+      case pathname.startsWith("/dashboard/calculations"):
         return "STRUCTURAL CALCULATIONS";
-      case "/dashboard/structures-database":
+      case pathname.startsWith("/dashboard/structures-database"):
         return "STRUCTURES DATABASE";
-      case "/dashboard/structures-manual":
+      case pathname.startsWith("/dashboard/structures-manual"):
         return "STRUCTURES MANUAL";
-      case "/dashboard/settings":
+      case pathname.startsWith("/dashboard/settings"):
         return "SETTINGS";
       default:
         return "DASHBOARD";
@@ -103,12 +103,48 @@ const DashboardNavbar = ({ children }: DashboardNavbarProps) => {
       {/* Main Content Area with Top Navbar */}
       <div className="flex-1 flex flex-col">
         {/* Top Navbar */}
-        <div className="h-[60px] min-h-[60px] max-h-[60px] border-b border-stone-800 flex items-center justify-between sticky top-0">
+        <div className="h-[60px] min-h-[60px] max-h-[60px] border-b border-stone-800 flex items-center sticky top-0">
           <div className="w-[350px] border-r border-stone-800 flex items-center justify-center">
             <h1 className="text-2xl font-bold text-stone-50">
               {getPageTitle()}
             </h1>
           </div>
+          {pathname.startsWith("/dashboard/structures-manual") && (
+            <div className="flex items-center justify-center gap-4">
+              <nav className="flex items-center justify-center gap-4 ">
+                <Button variant="ghost">
+                  <h2 className="text-stone-50 uppercase font-roboto font-thin">
+                    Mechanics
+                  </h2>
+                </Button>
+                <Button variant="ghost">
+                  <h2 className="text-stone-50 uppercase font-roboto font-thin">
+                    Statics
+                  </h2>
+                </Button>
+                <Button variant="ghost">
+                  <h2 className="text-stone-50 uppercase font-roboto font-thin">
+                    Materials
+                  </h2>
+                </Button>
+                <Button variant="ghost">
+                  <h2 className="text-stone-50 uppercase font-roboto font-thin">
+                    Structural Analysis
+                  </h2>
+                </Button>
+                <Button variant="ghost">
+                  <h2 className="text-stone-50 uppercase font-roboto font-thin">
+                    Loads
+                  </h2>
+                </Button>
+                <Button variant="ghost">
+                  <h2 className="text-stone-50 uppercase font-roboto font-thin">
+                    Structural Design
+                  </h2>
+                </Button>
+              </nav>
+            </div>
+          )}
         </div>
 
         {/* Main Content */}
