@@ -91,16 +91,13 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
           ref={carouselRef}
           onScroll={checkScrollability}
         >
-          <div
-            className={cn(
-              "absolute right-0  z-[1000] h-auto  w-[5%] overflow-hidden bg-gradient-to-l"
-            )}
-          ></div>
+          <div className="absolute left-0 top-0 bottom-0 z-[1000] w-[150px] pointer-events-none bg-gradient-to-r from-stone-900 to-transparent" />
+          <div className="absolute right-0 top-0 bottom-0 z-[1000] w-[150px] pointer-events-none bg-gradient-to-l from-stone-900 to-transparent" />
 
           <div
             className={cn(
               "flex flex-row justify-start gap-4 pl-4",
-              "max-w-7xl mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
+              "max-w-7xl mx-auto"
             )}
           >
             {items.map((item, index) => (
