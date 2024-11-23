@@ -10,8 +10,8 @@ import {
   Database,
   LucideIcon,
 } from "lucide-react";
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
 // Define Feature interface
 interface Feature {
