@@ -9,30 +9,36 @@ export default function StructuralCalculations() {
           Structural Calculations
         </h1>
       </div>
-      <div className="w-full text-stone-50 font-roboto font-thin flex-1">
-        <div className="border border-stone-600 rounded-sm h-full flex flex-col">
+      <div className="w-full text-stone-50 font-roboto font-thin flex-1 px-4 md:px-0">
+        <div className="border border-stone-600 h-full flex flex-col">
           <div className="h-[150px] flex w-full">
             <div className="w-[20%] border-r border-b border-stone-600 flex flex-col justify-center items-start p-2">
               <div className="h-full">
-                <h1>NAME:</h1>
+                <h1 className="text-sm md:text-md">NAME:</h1>
               </div>
               <div className="h-full">
-                <h1>ID:</h1>
+                <h1 className="text-sm md:text-md">ID:</h1>
               </div>
               <div className="h-full">
-                <h1>DATE:</h1>
+                <h1 className="text-sm md:text-md">DATE:</h1>
               </div>
             </div>
             <div className="w-[80%] flex flex-col justify-between h-full border-b border-stone-600 ">
               <div className="w-full h-full border-b border-stone-600 flex justify-start items-center">
-                <h2 className="text-center p-2">JOB TITLE:</h2>
+                <h2 className="text-center p-2 text-sm md:text-md">
+                  JOB TITLE:
+                </h2>
               </div>
               <div className="w-full h-full flex">
                 <div className="border-r border-stone-600 w-[40.625%] h-full flex justify-start items-center">
-                  <h1 className="text-center p-2">CALCULATION BY:</h1>
+                  <h1 className="text-center p-2 text-sm md:text-md">
+                    CALCULATION BY:
+                  </h1>
                 </div>
                 <div className="border-r border-stone-600 w-[40.625%] h-full flex justify-start items-center">
-                  <h1 className="text-center p-2">CHECKED BY:</h1>
+                  <h1 className="text-center p-2 text-sm md:text-md">
+                    CHECKED BY:
+                  </h1>
                 </div>
                 <div className="w-[18.75%] h-full flex justify-start items-center">
                   <h1 className="text-center p-2">PAGE: 1/10</h1>

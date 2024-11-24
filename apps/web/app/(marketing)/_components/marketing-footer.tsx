@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function MarketingFooter() {
   return (
-    <footer className="relative text-stone-50 pb-[16rem] overflow-hidden">
+    <footer className="relative text-stone-50 pb-[8rem] md:pb-[16rem] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -19,10 +19,12 @@ export default function MarketingFooter() {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-stone-900 to-transparent z-[1]" />
 
-      {/* Main Footer Content - Update z-index to be above gradient */}
+      {/* Main Footer Content */}
       <div className="container mx-auto px-4 relative z-[2] max-w-6xl">
         <div className="flex flex-col space-y-8">
-          <div className="flex justify-between items-start">
+          {/* Header Section */}
+          <div className="flex flex-col sm:flex-row justify-between items-start gap-8">
+            {/* Logo Section */}
             <div className="flex items-center space-x-2">
               <Image
                 src="https://ik.imagekit.io/danielcmadeley/logo-1.png?updatedAt=1731881065002"
@@ -30,10 +32,11 @@ export default function MarketingFooter() {
                 width={50}
                 height={25}
               />
-
               <span className="font-bold text-xl">STRUCTOPIA</span>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 ">
+
+            {/* Navigation Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full sm:w-auto">
               {/* Features Column */}
               <div className="space-y-4">
                 <h3 className="font-semibold text-sm">Features</h3>
@@ -216,7 +219,9 @@ export default function MarketingFooter() {
             </div>
           </div>
 
-          <div className="flex justify-between items-center">
+          {/* Bottom Section */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            {/* Social Links */}
             <div className="flex items-center space-x-8">
               <Link href="https://linkedin.com" className="hover:text-stone-50">
                 <Linkedin className="h-5 w-5" />
@@ -228,6 +233,8 @@ export default function MarketingFooter() {
                 <Github className="h-5 w-5" />
               </Link>
             </div>
+
+            {/* Status Badge */}
             <div className="flex items-center space-x-2 bg-green-500/10 px-3 py-1.5 rounded-md">
               <div className="h-2 w-2 rounded-full bg-green-500"></div>
               <span className="text-sm text-green-500 font-medium">
@@ -235,17 +242,18 @@ export default function MarketingFooter() {
               </span>
             </div>
           </div>
-
-          {/* Navigation Grid */}
         </div>
       </div>
 
-      {/* Background Text - Positioned to show only top half */}
-      <div className="absolute bottom-[-10%] left-0 right-0 pointer-events-none z-[1] flex justify-center">
+      {/* Background Text */}
+      <div className="absolute bottom-[-10%] left-0 right-0 pointer-events-none z-[1] flex justify-center overflow-hidden">
         <div
-          className="text-[16vw] font-bold leading-none tracking-wider text-transparent text-center"
+          className="text-[20vw] sm:text-[16vw] font-bold leading-none tracking-wider text-transparent text-center whitespace-nowrap"
           style={{
-            WebkitTextStroke: "2px rgba(255,255,255,0.8)",
+            WebkitTextStroke: "1px rgba(255,255,255,0.8)",
+            "@media (min-width: 640px)": {
+              WebkitTextStroke: "2px rgba(255,255,255,0.8)",
+            },
           }}
         >
           STRUCTOPIA

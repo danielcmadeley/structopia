@@ -7,10 +7,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
+import { Menu } from "lucide-react";
 
 export default function MarketingHeader() {
   const [isOpen, setIsOpen] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const dropdownItems = ["Features", "Resources", "Company"] as const;
 
@@ -149,26 +151,27 @@ export default function MarketingHeader() {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center w-full px-4">
       <header
         className={cn(
-          "fixed h-[40px] mt-2 items-center z-50 max-w-6xl mx-auto w-full flex justify-center",
+          "fixed h-[40px] mt-2 items-center z-50 w-full max-w-6xl flex justify-center",
           isOpen
             ? "rounded-t-[6px] bg-stone-950/80 backdrop-blur-md"
             : "rounded-[6px] bg-stone-800/80 backdrop-blur-md"
         )}
       >
-        <div className="flex items-center px-4 md:px-6 w-full max-w-6xl">
-          <Link href="/" className="mr-8 flex items-center gap-2">
+        <div className="flex items-center w-full px-4">
+          <Link href="/" className="mr-4 sm:mr-8 flex items-center gap-2">
             <Image
               src="https://ik.imagekit.io/danielcmadeley/logo-1.png?updatedAt=1731881065002"
               alt="Structopia"
               width={50}
               height={25}
               onMouseEnter={() => handleMouseEnter("")}
+              priority
             />
           </Link>
-          <nav className="flex flex-1 items-center gap-6">
+          <nav className="hidden md:flex flex-1 items-center gap-4 lg:gap-6">
             {allNavItems.map((item) =>
               dropdownItems.includes(item as (typeof dropdownItems)[number]) ? (
                 <Button
@@ -225,8 +228,67 @@ export default function MarketingHeader() {
               </SignedOut>
             </div>
           </nav>
+          <button
+            className="ml-auto md:hidden p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <Menu className="h-5 w-5 text-stone-400" />
+          </button>
         </div>
       </header>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed z-40 top-[48px] left-0 right-0 bg-stone-950/95 backdrop-blur-md md:hidden"
+          >
+            <nav className="flex flex-col p-4">
+              {allNavItems.map((item) => (
+                <Link
+                  key={item}
+                  href={
+                    dropdownItems.includes(
+                      item as (typeof dropdownItems)[number]
+                    )
+                      ? `/${item.toLowerCase()}`
+                      : linkDestinations[item as keyof typeof linkDestinations]
+                  }
+                  className="py-3 px-4 text-stone-400 hover:text-white"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item}
+                </Link>
+              ))}
+              <div className="border-t border-stone-800 mt-4 pt-4">
+                <SignedIn>
+                  <Link href="/dashboard">
+                    <Button
+                      size="sm"
+                      variant="default"
+                      className="w-full bg-red-800 text-white hover:bg-red-700"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Dashboard
+                    </Button>
+                  </Link>
+                </SignedIn>
+                <SignedOut>
+                  <Button
+                    size="sm"
+                    variant="default"
+                    className="w-full bg-red-800 text-white hover:bg-red-700"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <SignInButton />
+                  </Button>
+                </SignedOut>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <AnimatePresence>
         {isOpen && activeItem && (
           <motion.div
@@ -234,7 +296,7 @@ export default function MarketingHeader() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed max-w-6xl z-50 mt-[48px] w-full overflow-hidden bg-stone-950/80 backdrop-blur-md rounded-b-[6px]"
+            className="fixed z-50 mt-[48px] w-full max-w-6xl overflow-hidden bg-stone-950/80 backdrop-blur-md rounded-b-[6px] mx-4"
             onMouseEnter={handleDropdownMouseEnter}
             onMouseLeave={handleMouseLeave}
           >

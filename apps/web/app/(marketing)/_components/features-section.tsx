@@ -83,10 +83,11 @@ const FeaturesSection = () => {
   const [activeFeature, setActiveFeature] = useState<string>("ai");
 
   return (
-    <div className="relative -mt-[20vh] min-h-screen w-full flex justify-center">
-      <div className="w-full text-stone-50 min-h-[600px] p-6 flex">
-        <div className="max-w-6xl mx-auto space-y-8">
-          <div className="flex flex-wrap gap-2">
+    <div className="relative -mt-[20vh] min-h-screen w-full flex justify-center px-4 sm:px-6">
+      <div className="w-full text-stone-50 min-h-[600px] flex">
+        <div className="max-w-6xl w-full mx-auto space-y-6 md:space-y-8">
+          {/* Feature buttons - stack vertically on mobile */}
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2">
             {Object.entries(features).map(([key, feature]) => {
               const Icon = feature.icon;
               return (
@@ -94,25 +95,27 @@ const FeaturesSection = () => {
                   key={key}
                   variant="none"
                   className={cn(
-                    "flex items-center gap-2 text-sm",
+                    "flex items-center justify-start w-full sm:w-auto gap-2 text-sm md:text-base",
                     activeFeature === key && "text-red-900"
                   )}
                   onClick={() => setActiveFeature(key)}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-4 h-4 md:w-5 md:h-5" />
                   {feature.title}
                 </Button>
               );
             })}
           </div>
 
-          <div className="items-center border border-stone-600 rounded-[6px] relative w-full aspect-[1.4/1]">
+          {/* Image container - adjust aspect ratio for different screens */}
+          <div className="items-center border border-stone-600 rounded-[6px] relative w-full aspect-[1/1] sm:aspect-[4/3] md:aspect-[1.4/1]">
             {features[activeFeature]?.image && (
               <Image
                 src={features[activeFeature].image}
                 alt={features[activeFeature].title}
                 className="w-full h-full object-cover rounded-[6px]"
                 fill
+                priority
               />
             )}
           </div>
