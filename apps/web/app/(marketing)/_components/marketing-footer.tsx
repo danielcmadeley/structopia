@@ -248,12 +248,9 @@ export default function MarketingFooter() {
       {/* Background Text */}
       <div className="absolute bottom-[-10%] left-0 right-0 pointer-events-none z-[1] flex justify-center overflow-hidden">
         <div
-          className="text-[20vw] sm:text-[16vw] font-bold leading-none tracking-wider text-transparent text-center whitespace-nowrap"
+          className="text-[20vw] sm:text-[16vw] font-bold leading-none tracking-wider text-transparent text-center whitespace-nowrap sm:before:content-[''] sm:before:absolute sm:before:inset-0 sm:before:[WebkitTextStroke:2px_rgba(255,255,255,0.8)]"
           style={{
             WebkitTextStroke: "1px rgba(255,255,255,0.8)",
-            "@media (min-width: 640px)": {
-              WebkitTextStroke: "2px rgba(255,255,255,0.8)",
-            },
           }}
         >
           STRUCTOPIA
